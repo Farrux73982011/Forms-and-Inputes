@@ -1,8 +1,9 @@
 let form = document.forms.formm
 let input = document.querySelectorAll('.osn')
-let nv = document.querySelectorAll('.t_vip')
+let t_vip = document.querySelectorAll('.t_vip')
 let btn = document.querySelector('.btn')
 
+let inp = document.querySelectorAll('.osn')
 form.onsubmit = (event) => {
     event.preventDefault()
 
@@ -32,16 +33,25 @@ form.onsubmit = (event) => {
 }
 let patterns = {
     name: /^[a-z ,.'-]+$/i,
-    phone: /^9989[012345789][0-9]{7}$/,
     email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 }
 
 
 function validation(regex, field) {
     if (regex.test(field.value)) {
+        // nv.style.color = 'blue'
         field.style.border = "2px solid blue"
     } else {
+        // nv.style.color = 'red'
         field.style.border = "2px solid red"
+    }
+}
+function validation2(regex, text) {
+    console.log(regex);
+    if (regex.test(text.value)) {
+        text.style.color = 'blue'
+    } else {
+        text.style.color = 'red'
     }
 }
 
@@ -55,6 +65,7 @@ input.forEach(inp => {
             }
         } else {
             validation(patterns[inp.name], inp)
+            validation2(patterns[t_vip.name], t_vip)
         }
     }
 })
@@ -80,3 +91,16 @@ function submit(e) {
         user[key] = value
     })
 }
+
+// let regex = {
+//     name: /^[a-z ,.'-]+$/i,
+//     phone: /^9989[012345789][0-9]{7}$/,
+//     email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+// }
+// inp.onkeyup = () => {
+//     if(regex.test(inp.value)) {
+//         inp.style.borderColor = 'green'   
+//     } else {
+//         inp.style.borderColor = 'red'   
+//     }
+// }
